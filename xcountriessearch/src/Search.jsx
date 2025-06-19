@@ -3,7 +3,7 @@ import "./search.css"
 
 const Tile = ({flagUrl,countryName}) =>{
     return(
-        <div
+        <div className="countryCard"
         style={{
             display:"flex",
             justifyContent:"center",
@@ -30,7 +30,8 @@ function Search(){
     useEffect(()=>{
         fetch(API_ENDPOINT)
         .then((response) => response.json())
-        .then((data)=> setCountries(data));
+        .then((data)=> setCountries(data))
+        .catch(console.log("falied to fetch data"));
     },[]);
     console.log(searchString);
     const filterCountry = countries.filter((country)=> country.common.toLowerCase().includes(searchString.toLowerCase()));
