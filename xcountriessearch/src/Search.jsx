@@ -31,7 +31,10 @@ function Search(){
         fetch(API_ENDPOINT)
         .then((response) => response.json())
         .then((data)=> setCountries(data))
-        .catch(console.log("falied to fetch data"));
+        .catch((e)=>{
+            console.log("error occured");
+            console.error("failed to fetch",e)
+        });
     },[]);
     console.log(searchString);
     const filterCountry = countries.filter((country)=> country.common.toLowerCase().includes(searchString.toLowerCase()));
